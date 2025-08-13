@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grant Notice</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #00b4db, #0083b0);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px 50px;
+            border-radius: 15px;
+            backdrop-filter: blur(6px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            max-width: 500px;
+            text-align: center;
+            font-size: 1.5em;
+            white-space: pre-wrap;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            background: white;
+            margin-left: 3px;
+            animation: blink 0.7s infinite;
+        }
+        @keyframes blink {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="card" id="typing"></div>
+    <script>
+        const text = "Welcome Shannon Johnson\nYour grant of $13,359 is available";
+        let index = 0;
+        const typingDiv = document.getElementById("typing");
+        const cursor = document.createElement("span");
+        cursor.classList.add("cursor");
+        typingDiv.appendChild(cursor);
+
+        function type() {
+            if (index < text.length) {
+                typingDiv.textContent = text.substring(0, index + 1);
+                typingDiv.appendChild(cursor);
+                index++;
+                setTimeout(type, 70);
+            } else {
+                cursor.remove();
+            }
+        }
+        type();
+    </script>
+</body>
+</html>
